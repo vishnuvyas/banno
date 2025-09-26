@@ -31,3 +31,5 @@ go.work.sum
 # .idea/
 # .vscode/
 /README.html
+zig-out/
+.zig-cache
