@@ -1,6 +1,11 @@
 const std = @import("std");
-
+const flags = @import("./flags.zig");
 const Tool = enum { todo, mail };
+
+fn todo_tool() !void {
+    const flag_struct = flags.flag_int("n", "number");
+    std.debug.print("Provided following flag sturct : {any}", .{flag_struct});
+}
 
 fn manageArgs(alloc: std.mem.Allocator) !void {
     const args = std.process.argsAlloc(alloc) catch |err| {
@@ -10,19 +15,16 @@ fn manageArgs(alloc: std.mem.Allocator) !void {
     defer std.process.argsFree(alloc, args);
     if (args.len > 1) {
         const tool = args[1];
-        const toolEnum = std.meta.stringToEnum(Tool, tool) orelse {
+        const tool_enum = std.meta.stringToEnum(Tool, tool) orelse {
             return error.InvalidToolName;
         };
-        switch (toolEnum) {
+        switch (tool_enum) {
             Tool.todo => {
                 std.debug.print("Provided todo tool\n", .{});
-                const toolArgs = args[2..];
-                for (toolArgs) |toolArg| {
-                    std.debug.print("Provided tool arg {s}\n", .{toolArg});
-                }
+                try todo_tool();
             },
             else => {
-                std.debug.print("UnImplemented tool {any}", .{toolEnum});
+                std.debug.print("UnImplemented tool {any}", .{tool_enum});
             },
         }
     }
