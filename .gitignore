@@ -33,3 +33,4 @@ go.work.sum
 /README.html
 zig-out/
 .zig-cache
+bin/
