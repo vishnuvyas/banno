@@ -1,2 +1,5 @@
 # configuration for banno
 dropbox_api_key = "4d41b4a9f793fdb91f6977e0ad3d807c6627ee09c6a364fa0f58f555015e0ffd"
+
+athenaone_client_id = "0oapthh0xv5bXdejB297"
+athenaone_client_cred = "8K5RGzbWFf88CQErdjjoV2y3WPqEc4IHdCYQDeS7S-VTxE3Aics8EjqR8mrR3gPw"
